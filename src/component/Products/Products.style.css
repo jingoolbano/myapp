@@ -1,0 +1,9 @@
+.wrapper .hover:hover{
+    transform: scale(1.1);
+    transition: all 1.5s ease-in;
+    
+}
+
+.wrapper{
+    overflow: hidden;
+}

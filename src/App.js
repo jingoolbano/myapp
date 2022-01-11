@@ -3,14 +3,17 @@ import { Container } from 'react-bootstrap'
 
 import Footer from './component/Footer/Footer'
 import Header from './component/Header/Header'
+import Home from './pages/home'
 
 function App() {
     return (
         <div>
             <Header />
-            <Container>
-                <h2>ASAL SHOP</h2>
-            </Container>
+            <main className='py-3'>
+                <Container>
+                    <Home />
+                </Container>
+            </main>
             <Footer />
         </div>
     )
