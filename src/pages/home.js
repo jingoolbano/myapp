@@ -7,7 +7,7 @@ import products from '../products'
 const Home = () => {
     return (
         <div>
-            <h1>محصولات</h1>
+            <h1 className="my-5 text-center">محصولات</h1>
             <Row>
                 {products.map((item) => {
                     return (
