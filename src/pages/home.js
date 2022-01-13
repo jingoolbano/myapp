@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Row } from 'react-bootstrap'
+import axios from "axios";
+
 import Products from "../component/Products/Products";
 
-import products from '../products'
 
 const Home = () => {
+
+    const [products, setProducts] = useState([])
+
+    useEffect(() => {
+        const sendReq = async () => {
+            const response = await axios.get('http://localhost:8000/api/products')
+
+            setProducts(response.data)
+        }
+
+        sendReq()
+    })
+
+
     return (
         <div>
             <h1 className="my-5 text-center">محصولات</h1>

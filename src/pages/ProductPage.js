@@ -1,15 +1,27 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container, Row, Col, Card, Image, Button } from 'react-bootstrap'
+import axios from 'axios'
 
-import products from '../products'
 
 import './ProductPage.style.css'
 
 const ProductPage = ({ match }) => {
+    const [currentProduct, setproducts] = useState({})
 
-    const currentProduct = products.find((item) => {
-        return item._id === match.params.id
-    })
+    useEffect(() => {
+        const sendSingleProductReq = async () => {
+            const response = await axios.get(`http://localhost:8000/api/products/${match.params.id}`)
+
+            setproducts(response.data)
+        }
+
+        sendSingleProductReq()
+    }, [match])
+
+
+    /*   const currentProduct = products.find((item) => {
+          return item._id === match.params.id
+      }) */
 
     return (
         <Container className='my-5'>
@@ -19,7 +31,7 @@ const ProductPage = ({ match }) => {
                 </Col>
 
                 <Col sm={12} md={3} lg={3} className='my-auto mx-auto' >
-                    <Card >
+                    <Card>
                         <Card.Body>
                             <Card.Title>{currentProduct.name}</Card.Title>
                             <Card.Text>{currentProduct.description}</Card.Text>
